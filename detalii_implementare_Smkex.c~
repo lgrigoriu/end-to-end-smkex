@@ -1,0 +1,8 @@
+
+// Creare Nonce:
+
+#include <openssl/rand.h>
+int RAND_bytes(unsigned char *buf, int num);
+
+//RAND_bytes() puts num cryptographically strong pseudo-random bytes into buf.
+//returns 1 on success, 0 otherwise

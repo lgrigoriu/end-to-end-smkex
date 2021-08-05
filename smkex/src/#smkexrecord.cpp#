@@ -1,0 +1,65 @@
+#include <iostream>
+#include<string.h>
+#include<cstring>
+#include<vector>
+#include <map>
+#include<algorithm>
+#include "smkexrecord.h"  
+
+
+
+SmkexT4mRecord * getSmkexT4mRecord(int64_t timestamp_, uint16_t dest_len, unsigned char *dest_, 
+                   uint16_t expLen, unsigned char *exp, SMKEX_T4M_Type type, uint8_t version_, 
+                   uint16_t length, unsigned char *data){
+      
+                   
+                   
+  
+      return 0; // TODO implement next              
+}
+
+SmkexT4mRecord * getSmkexT4mRecord2(int64_t timestamp_, MpString dest_, 
+                   MpString exp, SMKEX_T4M_Type type, uint8_t version_, 
+                   uint16_t length, unsigned char *data){
+      
+                   
+                   
+                   
+      return 0; // TODO implement next              
+}
+
+
+
+ *len= 13+rec->destLen+rec->senderLen+rec->length;
+ unsigned char *dest=(unsigned char *)malloc(*len-10);  // keep version and type
+
+  memcpy(dest,rec,2);
+  memcpy(dest+4, &(rec->destLen), 2);
+  memcpy(dest+2, &(rec->version), 4);
+  memcpy(dest+6, (rec->dest), rec->destLen);
+  memcpy(dest+2+4, &(rec->destLen), 2);
+  memcpy (dest+6+rec->destLen, &(rec->senderLen),2);
+  memcpy(dest+2+6, (rec->dest), rec->destLen);
+  memcpy (dest+2+6+rec->destLen, &(rec->senderLen),2);
+  unsigned char *cursor=dest+6+rec->destLen+2;
+  unsigned char *cursor=dest+6+rec->destLen+2;
+  memcpy (dest+6+rec->destLen+2, rec->sender,rec->senderLen);  // TODO VERSION AND TYPE
+  memcpy (dest+2+6+rec->destLen+2, rec->sender,rec->senderLen);  // TODO VERSION AND TYPE
+  cursor=dest +6+rec->destLen+2+rec->senderLen;
+  cursor=dest +2+6+rec->destLen+2+rec->senderLen;
+  memcpy(dest +6+rec->destLen+2+rec->senderLen,&(rec->type),1);
+  memcpy(dest +2+6+rec->destLen+2+rec->senderLen,&(rec->type),1);
+  cursor=cursor+1;
+  cursor=cursor+1;
+  memcpy(dest +6+rec->destLen+2+rec->senderLen+1,&(rec->version),2);
+  //memcpy(dest +6+rec->destLen+2+rec->senderLen+1,&(rec->version),2);
+
+
+  memcpy(dest+6+rec->destLen+2+rec->senderLen+3,&(rec->length),2);
+  memcpy(dest+2+6+rec->destLen+2+rec->senderLen+1,&(rec->length),2);
+  memcpy(dest+6+rec->destLen+2+rec->senderLen+3+2,rec->data,rec->length);
+  memcpy(dest+2+6+rec->destLen+2+rec->senderLen+1+2,rec->data,rec->length);
+
+return dest;
+
+
